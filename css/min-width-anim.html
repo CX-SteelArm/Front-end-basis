@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Min width animation</title>
+  <style>
+    .con {width: 300px;} 
+    .btn {background-color: cornflowerblue;}
+    .pc {overflow: hidden; max-height: 0; transition: max-height 500ms;}
+    .pc.active {max-height: 500px;}
+  </style>
+</head>
+<body>
+  <div class="con">
+    <div class="btn">点击我1</div>
+    <div class="pc">
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+    </div>
+
+    <div class="btn">点击我2</div>
+    <div class="pc">
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+      <p>士大夫大师傅似的</p>
+    </div>
+  </div>
+  
+
+  <script>
+    let con = document.querySelector('.con')
+    let divs = Array.prototype.slice.call(con.querySelectorAll('div'))
+    for (let i = 0; i < divs.length; i++) {
+      let div = divs[i]
+      if (div.classList.contains('btn')) {
+        div.onclick = function () {
+          divs[i+1].classList.toggle('active')
+        }
+      }
+    }
+  </script>
+</body>
+</html>

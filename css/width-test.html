@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .ao {width: 0;}
+    .ao:before {
+      content: 'love爱love';
+      color: #fff;
+      outline: 1px solid red;
+      border: 1px solid blue;
+    }
+    .regular {width: 400px;}
+    input, textarea, img, video, object {
+      box-sizing: border-box;
+    }
+    
+    .regular input, .regular textarea, .regular select {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- 首选最小宽度测试 -->
+  <div class="ao"></div>
+
+  <div class="regular">
+    <input type="text">
+  </div>
+  <div class="regular">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+  </div>
+  <div class="regular">
+    <select name="" id="">
+      <option value="1">桃子</option>
+    </select>
+  </div>
+  <div class="regular">
+    <input type="range">
+  </div>
+</body>
+</html>

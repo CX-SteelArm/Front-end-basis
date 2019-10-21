@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .go {width: 600px; height: 400px; overflow: hidden;}
+    .mc {width: 2400px; height: 100%; font-size: 0;}
+    .mc div {width: 600px; display: inline-block; height: 100%; background-position: left top; background-size: 100% 100%; background-repeat: no-repeat; transition: width 500ms ease-in;}
+    .mc div.active {width: 0;}
+    .m1 {background-image: url('./a01.png');}
+    .m2 {background-image: url('./a02.png');}
+    .m3 {background-image: url('./a03.png');}
+    .m4 {background-image: url('./a04.png');}
+  </style>
+</head>
+<body>
+  <div class="go">
+    <div class="mc">
+      <div class="m1"></div>
+      <div class="m2"></div>
+      <div class="m3"></div>
+      <div class="m4 last"></div>
+    </div>
+  </div>
+  <button id="actBtn">active</button>
+</body>
+<script>
+  let actBtn = document.querySelector('#actBtn')
+  let mc = document.querySelector('.mc')
+  actBtn.addEventListener('click', function() {
+    let ch = Array.prototype.slice.call(mc.children)
+    for (let i = 0; i < ch.length; i++) {
+      let c = ch[i]
+      if (!c.classList.contains('active')) {
+        c.classList.add('active')
+        if (c.classList.contains('last')) {
+          c.addEventListener('transitionend', function () {
+            for (let i = 0; i < ch.length; i++) {
+              let cc = ch[i]
+              cc.classList.remove('active')
+              if (!cc.classList.contains('last'))
+                mc.appendChild(cc)
+              else
+                cc.classList.remove('last')
+            }
+          })
+        }
+        break
+      }
+    }
+  }, false)
+</script>
+</html>
