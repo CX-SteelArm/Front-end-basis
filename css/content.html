@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Content</title>
+  <style>
+    .im {
+      display: inline-block;
+      width: 256px; height: 192px;
+      border: 1px solid rebeccapurple;
+      /* 隐藏Firefox alt文字 */
+      color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .im:not([src]) {
+      /* 隐藏Chrome alt文字以及银色边框 */
+      visibility: hidden;
+    }
+    .im::before {
+      /* 淡蓝色占位背景 */
+      /* 注意这个是必需的 */
+      content: "";
+      position: absolute; left: 0;
+      width: 100%; height: 100%;
+      background-color: #f0f3f9;
+      visibility: visible;
+    }
+    .im::after {
+      content: attr(alt);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      line-height: 1.4em;
+      transform: translateY(100%);
+      transition: transform 200ms;
+      visibility: visible;
+    }
+    .im:hover::after {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img alt="我是一张图片" class="im">
+  </div>
+</body>
+</html>
